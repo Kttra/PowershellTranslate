@@ -1,4 +1,4 @@
-# PowershellTranslate
+# Powershell Translate
 A powershell script that translates text given by the user (uses google translate). The script is set up to take in multiple lines until q is typed. After q is typed, the translation will be outputted. By default, the script translates text to English. Edit the script if you want to translate to a different language.
 
 If the file doesn't run properly on windows, you need to run the script using powershell. In the event the script immediately closes, try running the following command in powershell as administrator:
