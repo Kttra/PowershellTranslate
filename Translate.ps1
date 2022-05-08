@@ -106,18 +106,19 @@ else {
 # Create a list object to store the finished translation in.
 $Translation = New-Object System.Collections.Generic.List[System.Object]
 $inputFromUser = @()
-$userInput = ''
-While($userInput -ne "q") {
-If ($null -ne $userInput) {
-$InputFromUser += $userInput.Trim()
+$input = ''
+While($input -ne "q") {
+If ($input -ne $null) {
+$InputFromUser += $input.Trim()
 }
-$userInput = Read-Host "Enter the text to translate here (Enter 'q' to exit)"
+$input = Read-Host "Enter text to translate here (Enter 'q' to exit)"
 }
-$Text = $inputFromUser[1..($inputFromUser.Length-1)]
-$Uri = "https://translate.googleapis.com/translate_a/single?client=gtx&sl=auto&tl=$($TargetLanguageCode)&dt=t&q=$Text"
+$inputFromUser = $inputFromUser[1..($inputFromUser.Length-1)].Trim()
+$Uri = "https://translate.googleapis.com/translate_a/single?client=gtx&sl=auto&tl=$($TargetLanguageCode)&dt=t&q=$inputFromUser"
 # Get the response from the web request, then throw a bunch of regex at it to clean it up.
 $RawResponse = (Invoke-WebRequest -Uri $Uri -Method Get).Content
 $CleanResponse = $RawResponse -split '\\r\\n' -replace '^(","?)|(null.*?\[")|\[{3}"' -split '","'
+$CleanResponse = $CleanResponse -replace "\]|\[|_en_2022q1.md|\,|", ""
 <# 
 Selecting every odd line and adding it to the $Translation list, we recreate the full translated text.
 #>
