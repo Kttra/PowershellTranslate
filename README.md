@@ -4,7 +4,7 @@ A powershell script that translates text given by the user (uses google translat
 If the file doesn't run properly on windows, you need to run the script using powershell. In the event the script immediately closes, try running the following command in powershell as administrator:
 
 ```powershell
-    set-executionpolicy remotesigned
+set-executionpolicy remotesigned
 ```
 
 The issue could be PowerShell's default security level, where (IIRC) will only run signed scripts. This command will tell PowerShell to allow local (that is, on a local drive) unsigned scripts to run.
