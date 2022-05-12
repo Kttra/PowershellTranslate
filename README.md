@@ -7,7 +7,7 @@ If the file doesn't run properly on windows, you need to run the script using po
 set-executionpolicy remotesigned
 ```
 
-The issue could be PowerShell's default security level, where (IIRC) will only run signed scripts. This command will tell PowerShell to allow local (that is, on a local drive) unsigned scripts to run.
+The issue could be PowerShell's default security level, where only signed scripts will run. In other words, this command will tell PowerShell to allow local unsigned scripts to run (scripts on a local drive).
 
 **Script Example**
 -------------
